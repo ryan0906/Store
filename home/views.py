@@ -11,8 +11,8 @@ def index(request):
     #translation.activate(user_language)
     #request.session[translation.LANGUAGE_SESSION_KEY] = request.LANGUAGE_CODE
 
-    #if translation.LANGUAGE_SESSION_KEY in request.session:
-    #    del request.session[translation.LANGUAGE_SESSION_KEY]
+    if translation.LANGUAGE_SESSION_KEY in request.session:
+        del request.session[translation.LANGUAGE_SESSION_KEY]
 
     template = loader.get_template('pages/home.html')
     context = {
