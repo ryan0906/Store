@@ -1,0 +1,13 @@
+# run server
+python manage.py runserver
+
+
+# create/update .po files
+django-admin makemessages -l <language code>
+
+# update all languages
+django-admin makemessages -a
+
+# compile message files
+django-admin compilemessages
+
