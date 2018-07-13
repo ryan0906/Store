@@ -1,1 +1,3 @@
 *.pyc
+venv/
+locale/vi/LC_MESSAGES/django.mo

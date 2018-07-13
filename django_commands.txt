@@ -11,3 +11,6 @@ django-admin makemessages -a
 # compile message files
 django-admin compilemessages
 
+
+# database migrate
+python manage.py makemigrations home

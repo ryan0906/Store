@@ -3,8 +3,6 @@
 {% load i18n %}
 
 {% block content %}
-    <h1>{{ temp_content }}</h1>
-
     {% get_current_language as LANGUAGE_CODE %}
     <h1>{{ LANGUAGE_CODE }}</h1>
 
@@ -14,11 +12,31 @@
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
-                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}selected{% endif %}>
                     {{ language.name_local }} ({{ language.code }})
                 </option>
             {% endfor %}
         </select>
         <input type="submit" value="OK">
-    </form>
+    </form><br>
+
+    <div>
+        {% for order in CURR_ORDERS %}
+            {{ order.table }}: {{ order.dishes }}<br>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    <!--<script>
+        var socket = new WebSocket('ws://' + window.location.host + '/users/');
+
+        socket.onopen = function open {
+            console.log('WebSockets connection created.');
+        };
+
+        if (socket.readyState == WebSocket.OPEN) {
+            socket.onopen();
+        }
+    </script> -->
 {% endblock %}

@@ -1,0 +1,56 @@
+{%load static i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ TAB_TITLE }}</title>
+    <style>
+        .title {
+            text-align: left;
+            color: #0033cc;
+            font-size: 60px;
+            padding: 14px 16px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .ul-navigate-bar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: sticky;
+            top: 0;
+        }
+        li {
+            float: left;
+        }
+        .navigate-bar-li-a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 7px 8px;
+            text-decoration: none;
+        }
+        .navigate-bar-li-a:hover {
+            background-color: #111;
+        }
+        .active {
+            background-color: #0033cc;
+        }
+    </style>
+</head>
+    <body>
+        <div class="title">
+            {% trans "DINER MANAGER" %}
+        </div>
+        <div>
+            <ul class="ul-navigate-bar">
+                {% for page in PAGES %}
+                    <li class="navigate-bar-li-a {% if page.0 == CURR_SITE %} active {% endif %}"><a class="navigate-bar-li-a" href="{% url page.0 %}">{{ page.1 }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% block content %}{% endblock %}
+        {% block script %}{% endblock %}
+    </body>
+</html>
