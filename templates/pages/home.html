@@ -28,15 +28,48 @@
 {% endblock %}
 
 {% block script %}
-    <!--<script>
-        var socket = new WebSocket('ws://' + window.location.host + '/users/');
-
-        socket.onopen = function open {
-            console.log('WebSockets connection created.');
-        };
-
-        if (socket.readyState == WebSocket.OPEN) {
-            socket.onopen();
+    <style>
+        .li-list-item {
+            list-style: none;
+            background: #0033cc;
+            color: white;
+            line-height: 2em;
+            padding: 0 0.5em;
+            overflow: hidden;
+            width: 10em;
+            height: auto;
+            margin: 2px 0;
         }
-    </script> -->
+    </style>
+    <script>
+        $(document).ready(function(){
+            var socket = new WebSocket('ws://' + window.location.host + '/ws/connections/');
+
+            socket.onmessage = function(e) {
+                var data = JSON.parse(e.data);
+                var message = data['message'];
+                $('#mess').append(message);
+
+            };
+            $("#test-btn").click(function(e){
+                var messageInput = $("#test-input").val();
+                socket.send(JSON.stringify({
+                    'message': messageInput
+                }));
+                $("#test-input").val("");
+            });
+            $("#add-order-btn").click(function(){
+                $("#order-list").append('<li class="li-list-item">Test</li>');
+            });
+        });
+    </script>
+    <div>
+        <button id="add-order-btn">Add</button>
+        <ul id="order-list">
+            <li class="li-list-item">Test</li>
+        </ul>
+        <textarea id="mess" cols="100" rows="20">{{ cacheData }}</textarea><br>
+        <input id="test-input" type="text" />
+        <input id="test-btn" type="button" value="Connect" />
+    </div>
 {% endblock %}

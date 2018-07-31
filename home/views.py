@@ -2,6 +2,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.utils import translation
+from django.core.cache import cache
 
 
 def home(request):
@@ -10,6 +11,17 @@ def home(request):
     #translation.activate(user_language)
     #request.session[translation.LANGUAGE_SESSION_KEY] = request.LANGUAGE_CODE
 
+    test = cache.scan("conv*")
+    if len(test) < 1:
+        cache_data = ""
+    else:
+        for i in test:
+            cache_data = test.get(i)
+
+    # if 'conv' in cache:
+    #     cache_data = cache.get('conv')
+    #else:
+    #    cache_data = ""
     curr_site_info = "Home"
     pages = [
         ("Home", _("Home")),
@@ -31,5 +43,6 @@ def home(request):
         "PAGES": pages,
         "CURR_SITE": curr_site_info,
         "CURR_ORDERS": curr_orders,
+        "cacheData": cache_data,
     }
     return HttpResponse(template.render(context, request))

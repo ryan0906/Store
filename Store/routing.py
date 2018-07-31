@@ -1,12 +1,10 @@
-from channels.routing import ProtocolTypeRouter
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
+import home.routing
 
-#from home.consumers import ws_connect, ws_disconnect
 
 application = ProtocolTypeRouter({
-
+    'websocket': AuthMiddlewareStack(
+        URLRouter(home.routing.websocket_urlpatterns)
+    ),
 })
-
-# channel_routing = [
-#     route('websocket.connect', ws_connect),
-#     route('websocket.disconnect', ws_disconnect),
-# ]
