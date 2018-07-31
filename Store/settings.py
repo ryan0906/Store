@@ -75,17 +75,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Store.wsgi.application'
 
+ASGI_APPLICATION = "Store.routing.application"
+
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('localhost', 6379)],
+            'hosts': [('127.0.0.1', 6379)],
         },
-        'ROUTING': 'Store.routing.channel_routing',
     }
 }
 
-ASGI_APPLICATION = "Store.routing.application"
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': '172.0.0.1:6379',
+        'OPTIONS': {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

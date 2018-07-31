@@ -14,3 +14,10 @@ django-admin compilemessages
 
 # database migrate
 python manage.py makemigrations home
+
+
+
+
+# install DJANGO & DJANGO CHANNELS
+pip install -U channels_redis
+pip install -U channels

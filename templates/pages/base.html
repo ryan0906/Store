@@ -1,4 +1,4 @@
-{%load static i18n %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +21,10 @@
             position: sticky;
             top: 0;
         }
-        li {
+        li.li-a-navigate-bar {
             float: left;
         }
-        .navigate-bar-li-a {
+        .li-a-navigate-bar {
             display: block;
             color: white;
             text-align: center;
@@ -38,6 +38,7 @@
             background-color: #0033cc;
         }
     </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
     <body>
         <div class="title">
@@ -46,7 +47,7 @@
         <div>
             <ul class="ul-navigate-bar">
                 {% for page in PAGES %}
-                    <li class="navigate-bar-li-a {% if page.0 == CURR_SITE %} active {% endif %}"><a class="navigate-bar-li-a" href="{% url page.0 %}">{{ page.1 }}</a></li>
+                    <li class="li-a-navigate-bar {% if page.0 == CURR_SITE %} active {% endif %}"><a class="li-a-navigate-bar" href="{% url page.0 %}">{{ page.1 }}</a></li>
                 {% endfor %}
             </ul>
         </div>

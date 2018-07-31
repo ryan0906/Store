@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-11 09:36+0000\n"
+"POT-Creation-Date: 2018-07-20 11:16+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,25 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: Store/settings.py:112
+#: Store/settings.py:124
 msgid "English"
 msgstr "Tieng Anh"
 
-#: Store/settings.py:113
+#: Store/settings.py:125
 msgid "Vietnam"
 msgstr "Tieng Viet"
 
-#. Translators: Testing welcome message
-#: bills/views.py:9 home/views.py:15 home/views.py:25
+#: bills/views.py:10 home/views.py:15 home/views.py:30
 msgid "Home"
 msgstr "Trang Chu"
 
-#. Translators: Testing welcome message
-#: bills/views.py:10 bills/views.py:19 home/views.py:16
+#: bills/views.py:11 bills/views.py:19 home/views.py:16
 msgid "Bills"
 msgstr "Hoa Don"
 
-#: templates/pages/base.html:44
+#: templates/pages/base.html:45
 msgid "DINER MANAGER"
 msgstr "QUAN LY QUAN AN"
 
@@ -1198,4 +1196,3 @@ msgstr ""
 #: venv/lib/python3.5/site-packages/django/views/templates/default_urlconf.html:408
 msgid "Connect, get help, or contribute"
 msgstr ""
-
