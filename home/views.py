@@ -11,12 +11,21 @@ def home(request):
     #translation.activate(user_language)
     #request.session[translation.LANGUAGE_SESSION_KEY] = request.LANGUAGE_CODE
 
+<<<<<<< HEAD
     tables = cache.keys("con*")
     if len(tables) < 1:
         cache_data = ""
     else:
         for i in tables:
             cache_data = cache.get(i)
+=======
+    test = cache.scan("conv*")
+    if len(test) < 1:
+        cache_data = ""
+    else:
+        for i in test:
+            cache_data = test.get(i)
+>>>>>>> f2886f1dd39bd905a364c4917e3dba06a03e2602
 
     # if 'conv' in cache:
     #     cache_data = cache.get('conv')
